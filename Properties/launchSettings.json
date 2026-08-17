@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Padallock (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Padallock (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

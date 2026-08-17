@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="Padallock.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Padallock"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--
+        This is the main content area of your application.
+        Add your UI elements here — for example, controls, layouts, and data-bound views.
+        Use 'dotnet new winui-page' to create additional pages and navigate to them via
+        the Frame in MainWindow (RootFrame).
+    -->
+    <ScrollViewer>
+        <StackPanel Spacing="16" Padding="32" MaxWidth="720">
+            <TextBlock Text="Padallock" Style="{StaticResource TitleTextBlockStyle}" />
+            <TextBlock
+                Text="Use currently playing media artwork for your Windows lock screen."
+                TextWrapping="Wrap" />
+
+            <InfoBar
+                x:Name="StatusInfoBar"
+                IsOpen="True"
+                IsClosable="False"
+                Message="Loading Padallock settings..."
+                Severity="Informational" />
+
+            <ToggleSwitch
+                x:Name="EnabledSwitch"
+                Header="Enable dynamic lock screen"
+                OffContent="Off"
+                OnContent="On"
+                Toggled="EnabledSwitch_Toggled" />
+            <TextBlock
+                Text="Enabling requests Windows permission to manage your lock-screen image. Padallock only changes it while compatible media is available."
+                Style="{StaticResource BodyTextBlockStyle}"
+                TextWrapping="Wrap" />
+
+            <ToggleSwitch
+                x:Name="TrackDetailsSwitch"
+                Header="Show title and artist"
+                OffContent="Artwork only"
+                OnContent="Artwork and track details"
+                Toggled="TrackDetailsSwitch_Toggled" />
+
+            <Button
+                x:Name="RefreshButton"
+                Content="Refresh now"
+                HorizontalAlignment="Left"
+                Click="RefreshButton_Click" />
+
+            <TextBlock Text="Playback status" Style="{StaticResource SubtitleTextBlockStyle}" />
+            <TextBlock x:Name="PlaybackStatusTextBlock" Text="No active media session detected." TextWrapping="Wrap" />
+
+            <InfoBar
+                IsOpen="True"
+                IsClosable="False"
+                Message="Windows cannot restore a prior Windows Spotlight or slideshow configuration. If you disable Padallock, re-enable that option from Settings > Personalization > Lock screen."
+                Severity="Warning" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>
